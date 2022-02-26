@@ -1,0 +1,6 @@
+Feb 25 2022
+made UI in QT designer
+imported UI directly into python file, keeping the UI file easily edittable
+starting to define UI elements 
+starting to Define needed functions 
+working with 1, 2, equals, and C buttons to manippulate the label 

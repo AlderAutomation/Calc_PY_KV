@@ -21,23 +21,47 @@ class main_ui_window(QMainWindow):
 
         #assign Actions 
         self.C_button.clicked.connect(self.clear)
-        self.button_1.clicked.connect(lambda: self.number(1))
-        self.button_2.clicked.connect(lambda: self.number(2))
+        self.button_1.clicked.connect(lambda: self.button_number(1))
+        self.button_2.clicked.connect(lambda: self.button_number(2))
         self.addition_button.clicked.connect(self.addition)
         self.equals_button.clicked.connect(lambda: self.equals(99))
 
         self.show()
     
 
-    def equals(self, answer):
-        self.display_label.setText(str(answer))
+    def clear(self):
+        self.display_label.setText("0")
+
+
+    def clear_entry(self):
+        pass
+
+
+    def backspace(self):
+        pass
+
+
+    def divide(self):
+        pass
+
+
+    def multiply(self):
+        pass
+
+
+    def subtraction(self):
+        pass
 
 
     def addition(self):
         pass
 
 
-    def number(self, num):
+    def equals(self, answer):
+        self.display_label.setText(str(answer))
+
+
+    def button_number(self, num):
         if self.display_label.text() is "0":
             self.display_label.clear()
             self.display_label.setText(str(num))
@@ -46,10 +70,6 @@ class main_ui_window(QMainWindow):
             new_num = str(existing_num) + str(num)
             new_num = int(new_num)
             self.display_label.setText(str(new_num))
-
-
-    def clear(self):
-        self.display_label.setText("0")
 
 
 def main():
