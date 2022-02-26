@@ -1,3 +1,3 @@
-# Windows 98 Calculator
+# Calculator
 
-Pobably been done a thousand times but lets try to replicate the windows 98 calculator using python and QT5. 
+A calculator app slightly based on the old Windows 98 calculator made in python and QT5
