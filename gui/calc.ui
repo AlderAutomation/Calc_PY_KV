@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>261</width>
-    <height>339</height>
+    <height>322</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Calculator</string>
@@ -43,7 +49,7 @@
      <enum>QFrame::Sunken</enum>
     </property>
     <property name="text">
-     <string>0.</string>
+     <string>0</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -459,7 +465,6 @@
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNormal">
    <property name="text">
     <string>Standard</string>
