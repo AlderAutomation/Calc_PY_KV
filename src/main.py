@@ -28,7 +28,11 @@ class main_ui_window(QMainWindow):
         self.button_8 = self.findChild(QPushButton, "button_8")
         self.button_9 = self.findChild(QPushButton, "button_9")
         self.button_0 = self.findChild(QPushButton, "button_0")
+        # self.decimal_button = self.findChild(QPushButton, "decimal_button")
         
+        self.divide_button = self.findChild(QPushButton, "divide_button")
+        self.multiply_button = self.findChild(QPushButton, "multiply_button")
+        self.subtraction_button = self.findChild(QPushButton, "subtraction_button")
         self.addition_button = self.findChild(QPushButton, "addition_button")
         self.equals_button = self.findChild(QPushButton, "equals_button")
 
@@ -45,6 +49,10 @@ class main_ui_window(QMainWindow):
         self.button_8.clicked.connect(lambda: self.button_number(8))
         self.button_9.clicked.connect(lambda: self.button_number(9))
         self.button_0.clicked.connect(lambda: self.button_number(0))
+        # self.decimal_button.clicked.connect(lambda: self.button_number("."))
+        self.divide_button.clicked.connect(lambda: self.operation("divide"))
+        self.multiply_button.clicked.connect(lambda: self.operation("multiply"))
+        self.subtraction_button.clicked.connect(lambda: self.operation("subtract"))
         self.addition_button.clicked.connect(lambda: self.operation("add"))
         self.equals_button.clicked.connect(self.equals)
 
@@ -72,8 +80,20 @@ class main_ui_window(QMainWindow):
 
 
     def equals(self):
-        if self.operator is "add":
+        if self.operator == "add":
             result = int(self.stored) + int(self.display_label.text())
+            self.display_label.setText(str(result))
+            self.is_equaled = True
+        elif self.operator == "subtract":
+            result = int(self.stored) - int(self.display_label.text())
+            self.display_label.setText(str(result))
+            self.is_equaled = True
+        elif self.operator == "divide":
+            result = int(self.stored) / int(self.display_label.text())
+            self.display_label.setText(str(result))
+            self.is_equaled = True
+        elif self.operator == "multiply":
+            result = int(self.stored) * int(self.display_label.text())
             self.display_label.setText(str(result))
             self.is_equaled = True
 
@@ -83,7 +103,7 @@ class main_ui_window(QMainWindow):
             self.display_label.setText("0") 
             self.is_equaled = False           
 
-        if self.display_label.text() is "0":
+        if self.display_label.text() == "0":
             self.display_label.clear()
             self.display_label.setText(str(num))
         else:
