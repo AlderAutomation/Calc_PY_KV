@@ -11,6 +11,7 @@ class main_ui_window(QMainWindow):
 
         self.operator = ""
         self.stored = 0
+        self.is_equaled = False
 
         #define UI
         self.display_label = self.findChild(QLabel, "display_label")
@@ -33,6 +34,7 @@ class main_ui_window(QMainWindow):
 
         #assign Actions 
         self.C_button.clicked.connect(self.clear)
+        self.CE_button.clicked.connect(self.clear_entry)
         self.button_1.clicked.connect(lambda: self.button_number(1))
         self.button_2.clicked.connect(lambda: self.button_number(2))
         self.button_3.clicked.connect(lambda: self.button_number(3))
@@ -73,9 +75,14 @@ class main_ui_window(QMainWindow):
         if self.operator is "add":
             result = int(self.stored) + int(self.display_label.text())
             self.display_label.setText(str(result))
+            self.is_equaled = True
 
 
     def button_number(self, num):
+        if self.is_equaled is True:
+            self.display_label.setText("0") 
+            self.is_equaled = False           
+
         if self.display_label.text() is "0":
             self.display_label.clear()
             self.display_label.setText(str(num))
