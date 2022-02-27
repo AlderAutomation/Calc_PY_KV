@@ -4,3 +4,10 @@ imported UI directly into python file, keeping the UI file easily edittable
 starting to define UI elements 
 starting to Define needed functions 
 working with 1, 2, equals, and C buttons to manippulate the label 
+
+Feb 27 2022 
+added remainder nummber buttons
+added adding gunctionality 
+added equalling functionality
+added CE functionality
+tweaked C functionality 
