@@ -14,3 +14,8 @@ tweaked C functionality
 ---------------------------
 added reaming operator functions - * / 
 ------------------------------------
+
+March 03 2022
+Added about dialog screen UI
+added qaction and connected to function
+TODO hook QAction to new UI 

@@ -14,6 +14,7 @@ class main_ui_window(QMainWindow):
         self.is_equaled = False
 
         #define UI
+        self.action_about = self.findChild(QAction, "action_about")
         self.display_label = self.findChild(QLabel, "display_label")
         self.C_button = self.findChild(QPushButton, "C_button")
         self.CE_button = self.findChild(QPushButton, "CE_button")
@@ -29,7 +30,6 @@ class main_ui_window(QMainWindow):
         self.button_9 = self.findChild(QPushButton, "button_9")
         self.button_0 = self.findChild(QPushButton, "button_0")
         # self.decimal_button = self.findChild(QPushButton, "decimal_button")
-        
         self.divide_button = self.findChild(QPushButton, "divide_button")
         self.multiply_button = self.findChild(QPushButton, "multiply_button")
         self.subtraction_button = self.findChild(QPushButton, "subtraction_button")
@@ -37,6 +37,7 @@ class main_ui_window(QMainWindow):
         self.equals_button = self.findChild(QPushButton, "equals_button")
 
         #assign Actions 
+        self.action_about.triggered.connect(self.about_screen)
         self.C_button.clicked.connect(self.clear)
         self.CE_button.clicked.connect(self.clear_entry)
         self.button_1.clicked.connect(lambda: self.button_number(1))
@@ -58,6 +59,10 @@ class main_ui_window(QMainWindow):
 
         self.show()
     
+
+    def about_screen(self):
+        print("About Clicked")
+
 
     def clear(self):
         self.display_label.setText("0")

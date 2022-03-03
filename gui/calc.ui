@@ -459,7 +459,7 @@
     </property>
     <addaction name="actionHelp"/>
     <addaction name="separator"/>
-    <addaction name="actionAbout"/>
+    <addaction name="action_about"/>
    </widget>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
@@ -471,16 +471,22 @@
    </property>
   </action>
   <action name="actionScientific">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Scientific</string>
    </property>
   </action>
   <action name="actionHelp">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Help Topics</string>
    </property>
   </action>
-  <action name="actionAbout">
+  <action name="action_about">
    <property name="text">
     <string>About Calculator</string>
    </property>
