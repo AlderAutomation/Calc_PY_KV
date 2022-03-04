@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QMenu, QMenuBar, QAction
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QMenu, QMenuBar, QAction, QDialog
 from PyQt5 import uic
 import sys
  
@@ -57,11 +57,13 @@ class main_ui_window(QMainWindow):
         self.addition_button.clicked.connect(lambda: self.operation("add"))
         self.equals_button.clicked.connect(self.equals)
 
+        self.about = about_window()
+
         self.show()
     
 
     def about_screen(self):
-        print("About Clicked")
+        self.about.show()
 
 
     def clear(self):
@@ -116,6 +118,13 @@ class main_ui_window(QMainWindow):
             new_num = str(existing_num) + str(num)
             new_num = int(new_num)
             self.display_label.setText(str(new_num))
+
+
+class about_window(QDialog):
+    def __init__(self) -> None:
+        super(about_window, self).__init__()
+
+        uic.loadUi("./gui/about.ui", self)
 
 
 def main():
