@@ -18,6 +18,7 @@ class main_ui_window(QMainWindow):
         self.display_label = self.findChild(QLabel, "display_label")
         self.C_button = self.findChild(QPushButton, "C_button")
         self.CE_button = self.findChild(QPushButton, "CE_button")
+        self.backspace_button = self.findChild(QPushButton, "backspace_button")
 
         self.button_1 = self.findChild(QPushButton, "button_1")
         self.button_2 = self.findChild(QPushButton, "button_2")
@@ -40,6 +41,7 @@ class main_ui_window(QMainWindow):
         self.action_about.triggered.connect(self.about_screen)
         self.C_button.clicked.connect(self.clear)
         self.CE_button.clicked.connect(self.clear_entry)
+        self.backspace_button.clicked.connect(self.backspace)
         self.button_1.clicked.connect(lambda: self.button_number(1))
         self.button_2.clicked.connect(lambda: self.button_number(2))
         self.button_3.clicked.connect(lambda: self.button_number(3))
@@ -77,7 +79,8 @@ class main_ui_window(QMainWindow):
 
 
     def backspace(self):
-        pass
+        templabel = self.display_label.text()
+        self.display_label.setText(templabel[:-1])        
 
 
     def operation(self, operator):

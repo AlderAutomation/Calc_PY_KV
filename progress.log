@@ -21,3 +21,5 @@ added qaction and connected to function
 TODO hook QAction to new UI - DONE
 -------------------------------------------
 QAction added to new UI and functioning
+-------------------------------------------
+added in the backspace button functionality
