@@ -19,6 +19,7 @@ class main_ui_window(QMainWindow):
         self.C_button = self.findChild(QPushButton, "C_button")
         self.CE_button = self.findChild(QPushButton, "CE_button")
         self.backspace_button = self.findChild(QPushButton, "backspace_button")
+        self.percent_button = self.findChild(QPushButton, "percent_button")
 
         self.button_1 = self.findChild(QPushButton, "button_1")
         self.button_2 = self.findChild(QPushButton, "button_2")
@@ -42,6 +43,7 @@ class main_ui_window(QMainWindow):
         self.C_button.clicked.connect(self.clear)
         self.CE_button.clicked.connect(self.clear_entry)
         self.backspace_button.clicked.connect(self.backspace)
+        self.percent_button.clicked.connect(self.percent)
         self.button_1.clicked.connect(lambda: self.button_number(1))
         self.button_2.clicked.connect(lambda: self.button_number(2))
         self.button_3.clicked.connect(lambda: self.button_number(3))
@@ -64,51 +66,51 @@ class main_ui_window(QMainWindow):
         self.show()
     
 
-    def about_screen(self):
+    def about_screen(self) -> None:
         self.about.show()
 
 
-    def clear(self):
+    def clear(self) -> None:
         self.display_label.setText("0")
         self.operator = ""
         self.stored = 0
 
  
-    def clear_entry(self):
+    def clear_entry(self) -> None:
         self.display_label.setText("0")
 
 
-    def backspace(self):
+    def backspace(self) -> None:
         templabel = self.display_label.text()
         self.display_label.setText(templabel[:-1])        
 
 
-    def operation(self, operator):
+    def operation(self, operator: str) -> None:
         self.stored = self.display_label.text()
         self.operator = operator
         self.display_label.setText("0")
 
 
-    def equals(self):
+    def equals(self) -> None:
         if self.operator == "add":
-            result = int(self.stored) + int(self.display_label.text())
+            result = float(self.stored) + float(self.display_label.text())
             self.display_label.setText(str(result))
             self.is_equaled = True
         elif self.operator == "subtract":
-            result = int(self.stored) - int(self.display_label.text())
+            result = float(self.stored) - float(self.display_label.text())
             self.display_label.setText(str(result))
             self.is_equaled = True
         elif self.operator == "divide":
-            result = int(self.stored) / int(self.display_label.text())
+            result = float(self.stored) / float(self.display_label.text())
             self.display_label.setText(str(result))
             self.is_equaled = True
         elif self.operator == "multiply":
-            result = int(self.stored) * int(self.display_label.text())
+            result = float(self.stored) * float(self.display_label.text())
             self.display_label.setText(str(result))
             self.is_equaled = True
 
 
-    def button_number(self, num):
+    def button_number(self, num: float) -> None:
         if self.is_equaled is True:
             self.display_label.setText("0") 
             self.is_equaled = False           
@@ -119,8 +121,13 @@ class main_ui_window(QMainWindow):
         else:
             existing_num = self.display_label.text()
             new_num = str(existing_num) + str(num)
-            new_num = int(new_num)
             self.display_label.setText(str(new_num))
+    
+    def percent(self) -> None:
+        num_of_percent = float(self.display_label.text())
+        percent_in_decimal = num_of_percent / 100
+        self.display_label.setText(str(percent_in_decimal * float(self.stored)))
+
 
 
 class about_window(QDialog):
@@ -130,7 +137,7 @@ class about_window(QDialog):
         uic.loadUi("./gui/about.ui", self)
 
 
-def main():
+def main() -> None:
     app = QApplication(sys.argv)
     UIWindow = main_ui_window()
     app.exec_()
