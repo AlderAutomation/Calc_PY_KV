@@ -31,3 +31,5 @@ fixed new float bug.
 -------------------------------------------
 Added copy function
 -------------------------------------------
+Added esc keyevent 
+Added copy shortcut

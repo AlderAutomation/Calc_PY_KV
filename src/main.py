@@ -1,5 +1,8 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QMenu, QMenuBar, QAction, QDialog
+from distutils import core
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QMenu, QMenuBar, QAction, QDialog, QShortcut
 from PyQt5 import uic
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QKeySequence
 import sys
 import pyperclip
  
@@ -14,6 +17,10 @@ class main_ui_window(QMainWindow):
         self.stored = 0
         self.is_equaled = False
 
+        # Shortcuts
+        self.shortcut_copy = QShortcut(QKeySequence('Ctrl+C'), self)
+        self.shortcut_copy.activated.connect(self.copy)
+        
         #define UI
         self.action_about = self.findChild(QAction, "action_about")
         self.action_copy = self.findChild(QAction, "actionCopy")
@@ -75,6 +82,15 @@ class main_ui_window(QMainWindow):
     
     def copy(self) -> None:
         pyperclip.copy(self.display_label.text())
+
+
+    def paste(self) -> None:
+        pass
+    
+
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_Escape:
+            self.close()
 
 
     def clear(self) -> None:
