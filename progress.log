@@ -23,3 +23,11 @@ TODO hook QAction to new UI - DONE
 QAction added to new UI and functioning
 -------------------------------------------
 added in the backspace button functionality
+
+March 06 2022
+added percent functionality
+fixed int to float types
+fixed new float bug. 
+-------------------------------------------
+Added copy function
+-------------------------------------------

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QMenu, QMenuBar, QAction, QDialog
 from PyQt5 import uic
 import sys
+import pyperclip
  
 
 class main_ui_window(QMainWindow):
@@ -15,6 +16,7 @@ class main_ui_window(QMainWindow):
 
         #define UI
         self.action_about = self.findChild(QAction, "action_about")
+        self.action_copy = self.findChild(QAction, "actionCopy")
         self.display_label = self.findChild(QLabel, "display_label")
         self.C_button = self.findChild(QPushButton, "C_button")
         self.CE_button = self.findChild(QPushButton, "CE_button")
@@ -40,6 +42,7 @@ class main_ui_window(QMainWindow):
 
         #assign Actions 
         self.action_about.triggered.connect(self.about_screen)
+        self.action_copy.triggered.connect(self.copy)
         self.C_button.clicked.connect(self.clear)
         self.CE_button.clicked.connect(self.clear_entry)
         self.backspace_button.clicked.connect(self.backspace)
@@ -68,6 +71,10 @@ class main_ui_window(QMainWindow):
 
     def about_screen(self) -> None:
         self.about.show()
+
+    
+    def copy(self) -> None:
+        pyperclip.copy(self.display_label.text())
 
 
     def clear(self) -> None:
