@@ -33,3 +33,4 @@ Added copy function
 -------------------------------------------
 Added esc keyevent 
 Added copy shortcut
+Added paste shortcut, function, and type error catching

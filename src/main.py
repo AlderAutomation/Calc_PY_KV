@@ -20,10 +20,13 @@ class main_ui_window(QMainWindow):
         # Shortcuts
         self.shortcut_copy = QShortcut(QKeySequence('Ctrl+C'), self)
         self.shortcut_copy.activated.connect(self.copy)
+        self.shortcut_paste = QShortcut(QKeySequence('Ctrl+V'), self)
+        self.shortcut_paste.activated.connect(self.paste)
         
         #define UI
         self.action_about = self.findChild(QAction, "action_about")
         self.action_copy = self.findChild(QAction, "actionCopy")
+        self.action_paste = self.findChild(QAction, "actionPaste")
         self.display_label = self.findChild(QLabel, "display_label")
         self.C_button = self.findChild(QPushButton, "C_button")
         self.CE_button = self.findChild(QPushButton, "CE_button")
@@ -50,6 +53,7 @@ class main_ui_window(QMainWindow):
         #assign Actions 
         self.action_about.triggered.connect(self.about_screen)
         self.action_copy.triggered.connect(self.copy)
+        self.action_paste.triggered.connect(self.paste)
         self.C_button.clicked.connect(self.clear)
         self.CE_button.clicked.connect(self.clear_entry)
         self.backspace_button.clicked.connect(self.backspace)
@@ -85,7 +89,11 @@ class main_ui_window(QMainWindow):
 
 
     def paste(self) -> None:
-        pass
+        try:
+            if float(pyperclip.paste()) or int(pyperclip.paste()):
+                self.display_label.setText(pyperclip.paste())
+        except ValueError as e:
+            print (e)
     
 
     def keyPressEvent(self, e):
