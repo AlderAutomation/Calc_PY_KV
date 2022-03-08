@@ -1,4 +1,3 @@
-from distutils import core
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QMenu, QMenuBar, QAction, QDialog, QShortcut
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
@@ -6,6 +5,7 @@ from PyQt5.QtGui import QKeySequence
 import sys
 import pyperclip
  
+app_version = 0.001
 
 class main_ui_window(QMainWindow):
     def __init__(self) -> None:
@@ -32,7 +32,6 @@ class main_ui_window(QMainWindow):
         self.CE_button = self.findChild(QPushButton, "CE_button")
         self.backspace_button = self.findChild(QPushButton, "backspace_button")
         self.percent_button = self.findChild(QPushButton, "percent_button")
-
         self.button_1 = self.findChild(QPushButton, "button_1")
         self.button_2 = self.findChild(QPushButton, "button_2")
         self.button_3 = self.findChild(QPushButton, "button_3")
@@ -43,7 +42,7 @@ class main_ui_window(QMainWindow):
         self.button_8 = self.findChild(QPushButton, "button_8")
         self.button_9 = self.findChild(QPushButton, "button_9")
         self.button_0 = self.findChild(QPushButton, "button_0")
-        # self.decimal_button = self.findChild(QPushButton, "decimal_button")
+        self.decimal_button = self.findChild(QPushButton, "decimal_button")
         self.divide_button = self.findChild(QPushButton, "divide_button")
         self.multiply_button = self.findChild(QPushButton, "multiply_button")
         self.subtraction_button = self.findChild(QPushButton, "subtraction_button")
@@ -68,7 +67,7 @@ class main_ui_window(QMainWindow):
         self.button_8.clicked.connect(lambda: self.button_number(8))
         self.button_9.clicked.connect(lambda: self.button_number(9))
         self.button_0.clicked.connect(lambda: self.button_number(0))
-        # self.decimal_button.clicked.connect(lambda: self.button_number("."))
+        self.decimal_button.clicked.connect(self.decimal)
         self.divide_button.clicked.connect(lambda: self.operation("divide"))
         self.multiply_button.clicked.connect(lambda: self.operation("multiply"))
         self.subtraction_button.clicked.connect(lambda: self.operation("subtract"))
@@ -153,12 +152,16 @@ class main_ui_window(QMainWindow):
             existing_num = self.display_label.text()
             new_num = str(existing_num) + str(num)
             self.display_label.setText(str(new_num))
+
     
     def percent(self) -> None:
         num_of_percent = float(self.display_label.text())
         percent_in_decimal = num_of_percent / 100
         self.display_label.setText(str(percent_in_decimal * float(self.stored)))
 
+    
+    def decimal(self) -> None:
+        pass
 
 
 class about_window(QDialog):
@@ -176,3 +179,5 @@ def main() -> None:
 
 if __name__=="__main__":
     main()
+
+    

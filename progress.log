@@ -34,3 +34,10 @@ Added copy function
 Added esc keyevent 
 Added copy shortcut
 Added paste shortcut, function, and type error catching
+-------------------------------------------
+
+March 08 2022
+added proper venv system (why havent i been doing this)
+added requirements file 
+added version number 
+uncommmented decimal button and moved to own function to dev later
