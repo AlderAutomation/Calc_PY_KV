@@ -41,3 +41,9 @@ added proper venv system (why havent i been doing this)
 added requirements file 
 added version number 
 uncommmented decimal button and moved to own function to dev later
+-------------------------------------------
+
+March 10 2022
+decimal function now working
+added update in ui controls 
+-------------------------------------------

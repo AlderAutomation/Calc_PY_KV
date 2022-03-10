@@ -161,7 +161,13 @@ class main_ui_window(QMainWindow):
 
     
     def decimal(self) -> None:
-        pass
+        to_dec_num = self.display_label.text()
+        
+        if "." in to_dec_num:
+            pass
+        else:
+            self.display_label.setText(to_dec_num + ".")
+
 
 
 class about_window(QDialog):

@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../assets/pics/calculator.ico</normaloff>../assets/pics/calculator.ico</iconset>
+    <normaloff>../../../../../.designer/assets/pics/calculator.ico</normaloff>../../../../../.designer/assets/pics/calculator.ico</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -463,6 +463,7 @@
     <addaction name="actionHelp"/>
     <addaction name="separator"/>
     <addaction name="action_about"/>
+    <addaction name="actionUpdate"/>
    </widget>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
@@ -502,6 +503,11 @@
   <action name="actionPaste">
    <property name="text">
     <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionUpdate">
+   <property name="text">
+    <string>Update</string>
    </property>
   </action>
  </widget>
