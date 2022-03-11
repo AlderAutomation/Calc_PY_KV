@@ -47,3 +47,9 @@ March 10 2022
 decimal function now working
 added update in ui controls 
 -------------------------------------------
+tweaked UI about page so that url and email are bothworrking links
+Added update class still trying to get functional though. 
+ - i may need multiprocessing to get this working
+ - i may need to move the exit to the updater class just after calling the batch file 
+ - also need to unzip the exe
+ 

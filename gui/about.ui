@@ -64,12 +64,15 @@
     </rect>
    </property>
    <property name="text">
-    <string>Feel free to drop by AlderAutomation.ca or email me at info@alderautomation.ca. </string>
+    <string>Feel free to drop by &lt;a href=https://AlderAutomation.ca&gt;Alderautomation&lt;/a&gt; &lt;br&gt; Or  &lt;a href=&quot;mailto:info@alderautomation.ca&quot;&gt; email me &lt;/a&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
    <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="openExternalLinks">
     <bool>true</bool>
    </property>
   </widget>

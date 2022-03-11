@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeySequence
 import sys
 import pyperclip
+import updater
  
 app_version = 0.001
 
@@ -27,6 +28,7 @@ class main_ui_window(QMainWindow):
         self.action_about = self.findChild(QAction, "action_about")
         self.action_copy = self.findChild(QAction, "actionCopy")
         self.action_paste = self.findChild(QAction, "actionPaste")
+        self.action_update = self.findChild(QAction, "actionUpdate")
         self.display_label = self.findChild(QLabel, "display_label")
         self.C_button = self.findChild(QPushButton, "C_button")
         self.CE_button = self.findChild(QPushButton, "CE_button")
@@ -49,10 +51,12 @@ class main_ui_window(QMainWindow):
         self.addition_button = self.findChild(QPushButton, "addition_button")
         self.equals_button = self.findChild(QPushButton, "equals_button")
 
+
         #assign Actions 
         self.action_about.triggered.connect(self.about_screen)
         self.action_copy.triggered.connect(self.copy)
         self.action_paste.triggered.connect(self.paste)
+        self.action_update.triggered.connect(self.update)
         self.C_button.clicked.connect(self.clear)
         self.CE_button.clicked.connect(self.clear_entry)
         self.backspace_button.clicked.connect(self.backspace)
@@ -166,8 +170,12 @@ class main_ui_window(QMainWindow):
         if "." in to_dec_num:
             pass
         else:
-            self.display_label.setText(to_dec_num + ".")
+            self.display_label.setText(to_dec_num + ".")        
 
+
+    def update(self) -> None:
+        update = updater.updater(app_version)
+        update
 
 
 class about_window(QDialog):

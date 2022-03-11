@@ -1,0 +1,3 @@
+echo hello linux 
+sleep 3 
+echo good by linux
