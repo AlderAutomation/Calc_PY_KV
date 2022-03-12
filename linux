@@ -1,3 +1,9 @@
-echo hello linux 
+#!/bin/bash
+
+echo Beginning updater
 sleep 3 
-echo good by linux
+mv ./test_update.exe ./calc.exe
+sleep 1
+rm ./patch.zip
+
+python3 /home/matthew/Share/Code/Python/calculator/src/main.py
