@@ -11,6 +11,7 @@ cwd = os.getcwd()
 kivy.require("1.9.1")
 Config.set('kivy', 'log_dir', cwd + "/logs/")
 Config.set('kivy', 'log_level', 'debug')
+# Config.set('kivy', 'window_icon', cwd + '/assets/pics/calculator.png')
 Config.write()
 
 class main_ui_window(BoxLayout):
@@ -81,7 +82,7 @@ class main_ui_window(BoxLayout):
 
     def about_screen(self) -> None:
         return about()
-        
+
 
 class about(GridLayout):
     pass
@@ -89,6 +90,7 @@ class about(GridLayout):
 
 class MainApp(App):
     def build(self):
+        self.icon = cwd + "/assets/pics/calculator.png"
         return main_ui_window()
 
 
