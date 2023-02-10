@@ -1,11 +1,11 @@
-import sys, os
-import pyperclip
+import os
 import math
 import kivy
 from kivy.app import App
-from kivy.logger import Logger
 from kivy.config import Config
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import StringProperty
 
 cwd = os.getcwd()
 kivy.require("1.9.1")
@@ -13,75 +13,61 @@ Config.set('kivy', 'log_dir', cwd + "/logs/")
 Config.set('kivy', 'log_level', 'debug')
 Config.write()
 
-class main_ui_window(GridLayout):
-    def about_screen(self) -> None:
-        # self.about.show()
-        print("Make an About screen")
-    
+class main_ui_window(BoxLayout):
+    calc_label = StringProperty()
 
-    # def keyPressEvent(self, e):
-    #     if e.key() == Qt.Key_Escape:
-    #         self.close()
+    def __init__(self, **kwargs):
+        super(main_ui_window, self).__init__(**kwargs)
+        self.calc_label = "0"
+        self.not_equaled = True
+        self.stored = ""
 
 
-    def clear(self) -> None:
-        self.display_label.setText("0")
-        self.operator = ""
-        self.stored = 0
+    def update_label(self, button:str):
+        if self.not_equaled:
+            if self.calc_label == "0":
+                self.calc_label = button
+            else:
+                self.calc_label = self.calc_label + button
+        else: 
+            self.not_equaled = True
+            self.calc_label = button
 
- 
-    def clear_entry(self) -> None:
-        self.display_label.setText("0")
+
+    def operator(self, operator:str):
+        if self.stored == "":
+            self.stored = self.calc_label + operator
+            self.calc_label = "0"
+        else:
+            self.stored = self.stored + self.calc_label + operator
+            self.calc_label = "0"
 
 
     def backspace(self) -> None:
-        templabel = self.display_label.text()
-        self.display_label.setText(templabel[:-1])        
+        if len(self.calc_label) <= 1:
+            self.calc_label = "0"
+        else:
+            self.calc_label = self.calc_label[:-1]
+
+    def reset(self) -> None: 
+        self.calc_label = "0"
+        self.stored = ""
 
 
-    def operation(self, operator: str) -> None:
-        self.stored = self.display_label.text()
-        self.operator = operator
-        self.display_label.setText("0")
+    def percent(self) -> None:
+        num_of_percent = float(self.calc_label)
+        self.calc_label = str(num_of_percent / 100)
+
+
+    def square(self) -> None: 
+        self.calc_label = str(math.sqrt(int(self.calc_label)))
 
 
     def equals(self) -> None:
-        if self.operator == "add":
-            result = float(self.stored) + float(self.display_label.text())
-            self.display_label.setText(str(result))
-            self.is_equaled = True
-        elif self.operator == "subtract":
-            result = float(self.stored) - float(self.display_label.text())
-            self.display_label.setText(str(result))
-            self.is_equaled = True
-        elif self.operator == "divide":
-            result = float(self.stored) / float(self.display_label.text())
-            self.display_label.setText(str(result))
-            self.is_equaled = True
-        elif self.operator == "multiply":
-            result = float(self.stored) * float(self.display_label.text())
-            self.display_label.setText(str(result))
-            self.is_equaled = True
-
-
-    def button_number(self, num: float) -> None:
-        if self.is_equaled is True:
-            self.display_label.setText("0") 
-            self.is_equaled = False           
-
-        if self.display_label.text() == "0":
-            self.display_label.clear()
-            self.display_label.setText(str(num))
-        else:
-            existing_num = self.display_label.text()
-            new_num = str(existing_num) + str(num)
-            self.display_label.setText(str(new_num))
-
-    
-    def percent(self) -> None:
-        num_of_percent = float(self.display_label.text())
-        percent_in_decimal = num_of_percent / 100
-        self.display_label.setText(str(percent_in_decimal * float(self.stored)))
+        self.stored = self.stored + self.calc_label
+        self.calc_label = str(eval(self.stored))
+        self.stored = ""
+        self.not_equaled = False
 
     
     def decimal(self) -> None:
@@ -93,11 +79,12 @@ class main_ui_window(GridLayout):
             self.display_label.setText(to_dec_num + ".")        
 
 
-# class about_window(QDialog):
-#     def __init__(self) -> None:
-#         super(about_window, self).__init__()
+    def about_screen(self) -> None:
+        return about()
+        
 
-#         uic.loadUi("./gui/about.ui", self)
+class about(GridLayout):
+    pass
 
 
 class MainApp(App):

@@ -4,18 +4,15 @@
         width: root.width
         height: root.height
 
-        TextInput:
-            hint_text: "0"
+        Label:
+            id: calc_label
+            text: root.calc_label
             size_hint_y: None
-            height: "100dp"
-            multiline: False
-            base_direction: "rtl"
-            input_filter: "float"
+            halign: "right"
             font_size: "75sp"
 
-
         GridLayout: 
-            cols: 3
+            cols: 2
             size_hint_y: None
             height: self.minimum_height
 
@@ -23,19 +20,13 @@
                 text: "Backspace"
                 size_hint_y: None
                 height: "50dp"
+                on_press: root.backspace()
 
             Button: 
-                text: "CE"
+                text: "Reset"
                 size_hint_y: None
                 height: "50dp"
-
-            Button:
-                text: "C"
-                size_hint_y: None
-                height: "50dp"
-
-
-
+                on_press: root.reset()
         
         GridLayout:
             cols: 5
@@ -44,58 +35,72 @@
             Button:
                 id: 7
                 text: "7"
+                on_press: root.update_label("7")
 
             Button:
                 id: 8
                 text: "8"
+                on_press: root.update_label("8")
 
             Button:
                 id: 9
                 text: "9"
+                on_press: root.update_label("9")
 
             Button:
                 id: divide
                 text: "/"
+                on_press: root.operator("/")
 
             Button:
                 id: square_root
                 text: "SQT"
+                on_press: root.square()
 
             Button:
                 id: 4
                 text: "4"
+                on_press: root.update_label("4")
 
             Button:
                 id: 5
                 text: "5"
+                on_press: root.update_label("5")
 
             Button:
                 id: 6
                 text: "6"
+                on_press: root.update_label("6")
 
             Button:
                 id: multiply
                 text: "*"
+                on_press: root.operator("*")
 
             Button:
                 id: percent
                 text: "%"
+                on_press: root.percent()
 
             Button:
                 id: 1
                 text: "1"
+                on_press: root.update_label("1")
 
             Button:
                 id: 2
                 text: "2"
+                on_press: root.update_label("2")
 
             Button:
                 id: 3
                 text: "3"
+                on_press: root.update_label("3")
 
             Button:
                 id: minus
                 text: "-"
+                on_press: root.operator("-")
 
             Button:
                 id: 1_x
@@ -104,6 +109,7 @@
             Button:
                 id: 0
                 text: "0"
+                on_press: root.update_label("0")
 
             Button:
                 id: plus_minus
@@ -112,17 +118,24 @@
             Button:
                 id: decimal
                 text: "."
+                on_press: root.update_label(".")
 
             Button:
                 id: plus
                 text: "+"
+                on_press: root.operator("+")
 
             Button:
                 id: equals
                 text: "="
+                on_press: root.equals()
 
         Button: 
             text: "About" 
             size_hint_y: None
             height: "50dp"
             on_press: root.about_screen()
+
+<about>
+    Label: 
+        text: "This app os made by Matthew at AlderAutomation using Python and Kivy framework. Feel free to visit us at AlderAutomation.ca"
