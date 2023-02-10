@@ -1,3 +1,3 @@
 # Calculator
 
-A calculator App mad in Python and Kivy. Packed for Android and Linux. 
+A calculator App made in Python and Kivy. Packed for Android and Linux. 
