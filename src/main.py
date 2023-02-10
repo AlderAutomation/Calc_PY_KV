@@ -4,15 +4,16 @@ import math
 import kivy
 from kivy.app import App
 from kivy.config import Config
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
+from kivy.core.text import LabelBase
 
 cwd = os.getcwd()
 kivy.require("1.9.1")
 Config.set('kivy', 'log_dir', cwd + "/logs/")
 Config.set('kivy', 'log_level', 'debug')
 Config.write()
+LabelBase.register(name='digital7', fn_regular= cwd + '/assets/fonts/Digital7.ttf')
 
 class main_ui_window(BoxLayout):
     calc_label = StringProperty()
@@ -93,4 +94,5 @@ class MainApp(App):
 
 
 if __name__=="__main__":
+    
     MainApp().run()
