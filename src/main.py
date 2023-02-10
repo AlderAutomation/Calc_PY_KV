@@ -1,4 +1,5 @@
-import os
+import os, sys, subprocess
+from threading import Thread
 import math
 import kivy
 from kivy.app import App
@@ -11,7 +12,6 @@ cwd = os.getcwd()
 kivy.require("1.9.1")
 Config.set('kivy', 'log_dir', cwd + "/logs/")
 Config.set('kivy', 'log_level', 'debug')
-# Config.set('kivy', 'window_icon', cwd + '/assets/pics/calculator.png')
 Config.write()
 
 class main_ui_window(BoxLayout):
@@ -80,18 +80,16 @@ class main_ui_window(BoxLayout):
             self.display_label.setText(to_dec_num + ".")        
 
 
-    def about_screen(self) -> None:
-        return about()
-
-
-class about(GridLayout):
-    pass
+    @staticmethod
+    def open_about_window():
+        Thread(target=lambda *largs: subprocess.run([sys.executable, cwd + "/src/about.py"])).start()
 
 
 class MainApp(App):
     def build(self):
         self.icon = cwd + "/assets/pics/calculator.png"
         return main_ui_window()
+
 
 
 if __name__=="__main__":
