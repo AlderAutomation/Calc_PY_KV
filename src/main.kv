@@ -1,0 +1,128 @@
+<main_ui_window>
+    BoxLayout: 
+        orientation: "vertical"
+        width: root.width
+        height: root.height
+
+        TextInput:
+            hint_text: "0"
+            size_hint_y: None
+            height: "100dp"
+            multiline: False
+            base_direction: "rtl"
+            input_filter: "float"
+            font_size: "75sp"
+
+
+        GridLayout: 
+            cols: 3
+            size_hint_y: None
+            height: self.minimum_height
+
+            Button: 
+                text: "Backspace"
+                size_hint_y: None
+                height: "50dp"
+
+            Button: 
+                text: "CE"
+                size_hint_y: None
+                height: "50dp"
+
+            Button:
+                text: "C"
+                size_hint_y: None
+                height: "50dp"
+
+
+
+        
+        GridLayout:
+            cols: 5
+            size: root.size
+
+            Button:
+                id: 7
+                text: "7"
+
+            Button:
+                id: 8
+                text: "8"
+
+            Button:
+                id: 9
+                text: "9"
+
+            Button:
+                id: divide
+                text: "/"
+
+            Button:
+                id: square_root
+                text: "SQT"
+
+            Button:
+                id: 4
+                text: "4"
+
+            Button:
+                id: 5
+                text: "5"
+
+            Button:
+                id: 6
+                text: "6"
+
+            Button:
+                id: multiply
+                text: "*"
+
+            Button:
+                id: percent
+                text: "%"
+
+            Button:
+                id: 1
+                text: "1"
+
+            Button:
+                id: 2
+                text: "2"
+
+            Button:
+                id: 3
+                text: "3"
+
+            Button:
+                id: minus
+                text: "-"
+
+            Button:
+                id: 1_x
+                text: "1/x"
+
+            Button:
+                id: 0
+                text: "0"
+
+            Button:
+                id: plus_minus
+                text: "+/-"
+
+            Button:
+                id: decimal
+                text: "."
+
+            Button:
+                id: plus
+                text: "+"
+
+            Button:
+                id: equals
+                text: "="
+
+        Button: 
+            text: "About" 
+            size_hint_y: None
+            height: "50dp"
+            on_press: root.about_screen()
