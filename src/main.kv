@@ -8,8 +8,17 @@
             id: calc_label
             text: root.calc_label
             size_hint_y: None
-            halign: "right"
             font_size: "75sp"
+            text_size: self.size
+            halign: "right"
+            background_color: 1,1,1,1
+            canvas.before: 
+                Color:
+                    rgba: self.background_color
+                Rectangle: 
+                    size: self.size
+                    pos: self.pos
+            color: (0,0,0,1)
 
         GridLayout: 
             cols: 2
