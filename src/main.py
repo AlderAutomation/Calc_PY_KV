@@ -17,6 +17,7 @@ LabelBase.register(name='digital7', fn_regular= cwd + '/assets/fonts/Digital7.tt
 
 class main_ui_window(BoxLayout):
     calc_label = StringProperty()
+    buttonbg = .4,.4,.6,1
 
     def __init__(self, **kwargs):
         super(main_ui_window, self).__init__(**kwargs)
