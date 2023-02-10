@@ -13,7 +13,7 @@ package.domain = org.alderautomation
 source.dir = ./src/
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,ttf
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -99,10 +99,10 @@ fullscreen = 0
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 27
+#android.api = 31
 
 # (int) Minimum API your APK / AAB will support.
-#android.minapi = 21
+#android.minapi = 30
 
 # (int) Android SDK version to use
 #android.sdk = 20

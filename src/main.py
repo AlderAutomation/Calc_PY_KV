@@ -13,7 +13,7 @@ kivy.require("1.9.1")
 Config.set('kivy', 'log_dir', cwd + "/logs/")
 Config.set('kivy', 'log_level', 'debug')
 Config.write()
-LabelBase.register(name='digital7', fn_regular= cwd + '/assets/fonts/Digital7.ttf')
+# LabelBase.register(name='digital7', fn_regular= cwd + '/assets/fonts/Digital7.ttf')
 
 class main_ui_window(BoxLayout):
     calc_label = StringProperty()
